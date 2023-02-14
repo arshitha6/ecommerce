@@ -1,0 +1,22 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Product Detail{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-6 text-center align-self-center">
+   <img src="{{product.product_iamge.url}}" alt="" class="img-fluid img-thumbnail" style="height:350px;">
+  </div>
+  <div class="col-sm-5 offset-sm-1">
+   <h2>{{product.title}}</h2>
+   <hr>
+   <p>{{product.description}}</p>
+   <h4>Rs.{{product.price}}</h4> <br>
+   <form action="/add-to-cart">
+    <input type="hidden" name="prod_id" value={{product.id}} id="prod_id">
+    <a class="btn btn-secondary" href="{% url 'cart:add_cart' product.id %}">Add To Cart</a>
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
